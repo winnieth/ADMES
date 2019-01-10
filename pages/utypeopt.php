@@ -12,7 +12,7 @@ $rows = mysqli_num_rows($result);
 
 if ($rows){
     while ($utype = mysqli_fetch_array($result)){
-        echo "<option name=type>".$utype['usertype']."</option>";
+        echo "<option value='".$utype['usertype']."'>".$utype['usertype']."</option>";
     }
 }
 ?>

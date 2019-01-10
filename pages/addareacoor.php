@@ -139,7 +139,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="loginasform.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -152,7 +152,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="pcindex.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="pc_index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                        
                             <!-- /.nav-second-level -->
@@ -160,14 +160,15 @@
                         <li>
                             <a href="#"><i class="fa fa-table fa-fw"></i> Registered Users</a>
                         </li>
-                        <li>
+                    <!--<li>
                             <a href="#"><i class="fa fa-edit fa-fw"></i> Accreditation Files</a>
                         </li>
+                    -->
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Areas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Area I</a>
+                                    <a href="pc_areaI.php">Area I</a>
                                 </li>
 								
                                 <li>
@@ -227,7 +228,8 @@
 							</i> Registered Area Coordinators
                             <div class="pull-right">
                                 <div class="btn-group" >
-                                    <button type="button" class="btn btn-default btn-xs fa fa-plus pull-right" data-Toggle="modal" data-target="#register"></button>
+                                    <button type="button" class="btn btn-default btn-xs fa fa-plus pull-right" data-Toggle="modal" data-target="#register"
+                                            data-backdrop="static"></button>
                                     <!-- The Modal -->
                                     <div class="modal fade" id="register" role="dialog">
                                         <div class="modal-dialog modal-sm">
@@ -242,29 +244,30 @@
                                                 <!-- Modal body -->
                                                 <div class="modal-body">
                                                     <form role="form" action="tables.php" method="post" >
+                                                        <?php include "add_area_c.php"; //adding area coordinator function ?> 
                                                         <div class="input-group">
                                                             <label> Name</label><br>
-                                                            <input type="text" name="name">
+                                                            <input type="text" name="name" required>
                                                         </div>
                                                         <div class="input-group">
                                                             <label> Lastname</label><br>
-                                                            <input type="text" name="lastname">
+                                                            <input type="text" name="lastname" required>
                                                         </div>
                                                         <div class="input-group">
                                                             <label> Username</label><br>
-                                                            <input type="text" name="username">
+                                                            <input type="text" name="username" required>
                                                         </div>
                                                         <div class="input-group">
                                                             <label> Password</label><br>
-                                                            <input type="text" name="password">
+                                                            <input type="text" name="password" required>
                                                         </div>
                                                         <div class="input-group">
                                                             <label> Usertype</label><br>
                                                             <select name="usertype" class="custom-select">
                                                                 <option class="list-group-item disabled">Choose Usertype</option>
-                                                                <?php include('utypeopt.php');?>
+                                                                <?php include('utypeopt.php'); //displaying usertype ?>
                                                             </select>
-                                                        </div><hr>
+                                                        </div><hr> &emsp;
                                                         <!--    <div class="input-group">
                                                                 <button type="submit" name="Register" class="btn btn-default btn-default pull-left">Register</button>
                                                             </div>
@@ -275,73 +278,7 @@
                                                         <button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal">
                                                         <span class="glyphicon glyphicon-remove"></span> Cancel</button>
                                                         </div>
-                                                        <?php
-                                                            //session_start();
                                                         
-                                                            $errors = array();
-                                                            //connect to the database
-                                                            $db = mysqli_connect('localhost','root', '','registration');
-
-                                                            if (!$db){
-                                                                die ("Connection failed: ". mysqli_connect_error());
-                                                            }
-                                                            //echo "Connected successfully!";
-
-
-                                                            //if the register button is clicked
-                                                            if (isset($_POST['Register'])) {
-                                                                $name = mysqli_real_escape_string($db, $_POST['name']);
-                                                                $lastname = mysqli_real_escape_string($db, $_POST['lastname']);
-                                                                $username = mysqli_real_escape_string($db, $_POST['username']);
-                                                                $password = mysqli_real_escape_string($db, $_POST['password']);
-                                                                $utype = mysqli_real_escape_string($db, $_POST['usertype']);
-
-                                                                //errors for empty forms
-                                                                if (empty($name)){
-                                                                    array_push($errors, "Name is required"); //add error to errors to array
-                                                                }
-                                                                if (empty($lastname)){
-                                                                    array_push($errors, "Lastname is required");
-                                                                }if (empty($username)){
-                                                                    array_push($errors, "Username is required");
-                                                                }
-                                                                if (empty($password)){
-                                                                    array_push($errors, "Password is required");
-                                                                }
-
-                                                                switch ($utype) {
-                                                                    case 'admin':
-                                                                        $utype_id = 1;
-                                                                        break;
-                                                                    case 'area coordinator':
-                                                                        $utype_id = 2;
-                                                                        break;
-                                                                    case 'program coordinator':
-                                                                        $utype_id = 3;
-                                                                        break;
-                                                                    case 'admin':
-                                                                        $utype_id = 4;
-                                                                        break;
-                                                                    default:
-                                                                        echo "switch did not work as planned!";
-                                                                        break;
-                                                                }
-
-
-                                                                //if there are no errors,save user to database
-                                                                if(count($errors)==0) {
-                                                                // $password=md5($password);
-                                                                    $sql = "INSERT INTO `users` (`user_id`, `name`, `lastname`, `user`, `pass`,`utype`) 
-                                                                                VALUES (NULL, '$name', '$lastname', '$username', '$password','$utype_id')";
-                                                                            mysqli_query($db, $sql);
-                                                                            $_SESSION['username'] = $username;
-                                                                            $_SESSION['success'] = "You are now logged in";
-                                                                            header('location: addareacoor.php');
-                                                                }
-                                                                
-                                                            }
-
-                                                        ?>
                                                     </form>
                                                 </div>
                                                 
@@ -366,7 +303,7 @@
                                             <th>Firstname</th>
                                             <th>Lastname</th>
                                             <th>Username</th>
-                                            <th>Usertype</th>
+                                            
                                             <!--    <th>Usertype</th>
                                                 <th>Program</th> -->
                                         </tr>
@@ -398,11 +335,35 @@
                                                         $result2 = mysqli_query($db, $sql2);
                                                         $udtype = mysqli_fetch_array($result2);
 
-                                                        echo "<td>".$udtype['usertype']."</td>";
+                                                        #echo "<td>".$udtype['usertype']."</td>";
+                                                        echo "<td><form action='delete_user.php' method='GET' class='pull-right'>
+                                                                <button type='submit' name='edit' class='btn btn-default btn-xs glyphicon glyphicon-edit'data-Toggle='modal' data-target='#register'> 
+                                                                <button type='submit' name='delete' class='btn btn-default btn-xs glyphicon glyphicon-trash' data-Toggle='modal data-target='#confirmdel'>
+                                                                </button></form></td>";
+                                                                
                                                         echo "</tr>";
+                                                        
                                                     }
                                                 }
+                                                
                                             ?>
+
+                                            <div class="modal fade" id="confirmdel" role="dialog">
+                                                <div class="modal-dialog modal-sm" >
+                                                    <div class="modal-content">
+                                                    
+                                                        <!-- Modal body -->
+                                                        <div class="modal-body">
+                                                            <span class="label label-warning">Are you sure you want o delete this user?</span>
+                                                            <span class="glyphicon glyphicon-ok"></span> Yes</button>
+                                                            <button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal">
+                                                            <span class="glyphicon glyphicon-remove"></span> No</button>
+                                                        </div>
+                                                          
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -440,6 +401,9 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
+    <script>
+    
+    </script>
 
 </body>
 

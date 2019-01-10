@@ -39,17 +39,19 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Sign In as</h3>
+                        <h3 class="panel-title text-center">Sign In as</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" method="POST">
-                            <fieldset>
-                                <a href="loginform.php" class="btn btn-lg btn-success btn-block" name="admin">Administrator</a>
-                                <a href="loginform.php" class="btn btn-lg btn-success btn-block" name="area">Area Coordinator</a>
-                                <a href="loginform.php" class="btn btn-lg btn-success btn-block" name="prog">Program Coordinator</a>
-                                <a href="loginform.php" class="btn btn-lg btn-success btn-block" name="accr">Accreditor</a>
+                        <form action="logout.php" method="POST">
+                            
+                            <button type="submit" class="btn btn-lg btn-success btn-block" name="admin">Administrator</button>
+                            <button type="submit" class="btn btn-lg btn-success btn-block" name="prog">Program Coordinator</button>
+                            <button type="submit" class="btn btn-lg btn-success btn-block" name="area">Area Coordinator</button>
+                            <button type="submit" class="btn btn-lg btn-success btn-block" name="accr">Accreditor</button>
+                                
                                 <!-- Change this to a button or input when using this as a form -->
-                            </fieldset>
+                            <?php include "loginas.php"?>
+                            
                         </form>
                     </div>
                 </div>

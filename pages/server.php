@@ -17,7 +17,7 @@
         $lastname = mysqli_real_escape_string($db, $_POST['lastname']);
         $username = mysqli_real_escape_string($db, $_POST['username']);
         $password = mysqli_real_escape_string($db, $_POST['password']);
-        $utype = $_POST['type'];
+        $utype = mysqli_real_escape_string($db, $_POST['usertype']);
 
         //errors for empty forms
         if (empty($name)){
@@ -32,37 +32,36 @@
             array_push($errors, "Password is required");
         }
 
+        switch ($utype) {
+            case 'admin':
+                $utype_id = 1;
+                break;
+            case 'area coordinator':
+                $utype_id = 2;
+                break;
+            case 'program coordinator':
+                $utype_id = 3;
+                break;
+            case 'admin':
+                $utype_id = 4;
+                break;
+            default:
+                echo "switch did not work as planned!";
+                break;
+        }
+
+
         //if there are no errors,save user to database
         if(count($errors)==0) {
            // $password=md5($password);
-            $sql = "INSERT INTO `users` (`user_id`, `name`, `lastname`, `user`, `pass`) 
-                        VALUES (NULL, '$name', '$lastname', '$username', '$password')";
+            $sql = "INSERT INTO `users` (`user_id`, `name`, `lastname`, `user`, `pass`,`utype`) 
+                        VALUES (NULL, '$name', '$lastname', '$username', '$password','$utype_id')";
                     mysqli_query($db, $sql);
                     $_SESSION['username'] = $username;
                     $_SESSION['success'] = "You are now logged in";
                     header('location: index.html');
         }
         
-    }
-    
-    if(isset($_POST['Login'])){
-
-        if (empty($username)){
-            array_push($errors, "Username is required");
-        }
-        if (empty($password)){
-            array_push($errors, "Password is required");
-        }
-
-        if(count($errors)==0) {
-
-            if((mysqli_query("SELECT * FROM users WHERE user == '$username'"))&&(mysqli_query("SELECT * FROM users WHERE pass == '$password'"))){
-                header("location: index.php");
-            }
-            elseif ((mysqli_query("SELECT * FROM users WHERE user == '$username'"))||(mysqli_query("SELECT * FROM users WHERE pass == '$password'"))) {
-                array_push($errors, "Username and Password does not match!");
-            }
-        }
     }
 
 ?>

@@ -37,10 +37,10 @@
 
 <body>
 
-    <div id="wrapper">
+    <div id="wrapper"style=" background-color: #fefbd8">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; background-color: #8d9db6">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -51,52 +51,16 @@
                 <a class="navbar-brand" href="index.html"></a>
             </div>
             <!-- /.navbar-header -->
-					<h2> AACCUP DOCUMENT MANAGEMENT AND EVALUATION SYSTEM</h2>
+					<h2> &emsp; &emsp;AACCUP DOCUMENT MANAGEMENT AND EVALUATION SYSTEM FOR BUKSU</h2>
             <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-
-                    <ul class="dropdown-menu dropdown-messages">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>coordinator</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>Read All Messages</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-messages -->
-                </li>
+          
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-tasks">
-                     
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>See All Tasks</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
+                   
                     <!-- /.dropdown-tasks -->
                 </li>
                 <!-- /.dropdown -->
-                <li class="dropdown">
+              <!--  <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
@@ -127,7 +91,7 @@
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         </li>
-                    </ul>
+                    </ul>-->
                     <!-- /.dropdown-alerts -->
                 </li>
                 <!-- /.dropdown -->
@@ -136,12 +100,11 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> About</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
+                       
                         <li class="divider"></li>
-                        <li><a href="loginasform.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -153,17 +116,7 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
+                      
                         <li>
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
@@ -173,16 +126,11 @@
                         <li>
                             <a href="tables.php"><i class="fa fa-table fa-fw"></i> Registered Users</a>
                         </li>
+                      
                         <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Accreditation Files</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> ACCUP<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-tasks fa-1x"></i> ACCUP<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="panels-wells.php">Colleges</a>
-                                </li>
-								
+                               
                                 <li>
                                     <a href="buttons.php">Department</a>
                                 </li>
@@ -202,106 +150,194 @@
                 </div>
             </div>
         </nav>
-        <div id="page-wrapper">
-            <div class="row">
-    
-            </div>
-		<div class="btn-group btn-group-lg">
-        <button type="button" class="btn btn-success btn-xs" data-Toggle="modal" data-target="#register">CREATE</button>
-        <!-- The Modal -->
-        <div class="modal" id="register">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <div id="page-wrapper"style=" background-color: #eee">
+            <div class="row ">
+                <hr>&emsp;
+                <button type="button" name="back" class="btn btn-default btn-sm">
+                    <span class= "glyphicon glyphicon-arrow-left" ></span>
+                </button>
+                 <div><h2>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Registered Users </h2></div>
+                <hr>
+                <?php 
+                    $_SESSION['page']= $_SERVER['PHP_SELF'];
+                ?>
+            <div class="col-lg-12">
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-user fa-fw">
+							</i> Registered Users
+                            <div class="pull-right">
+                                <div class="btn-group" >
+                                    <a href="add_prog.php">
+                                    <button type="button" class="btn btn-default btn-xs fa fa-plus pull-right"></button>
+                                    </a><!-- The Modal -->
+                                    <div class="modal fade" id="register" role="dialog">
+                                        <div class="modal-dialog modal-sm">
+                                            <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Register New User</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Register New User</h4>
+                                                </div>
 
-            <!-- Modal body -->
-            <div class="modal-body">
-            <form action="tables.php" method="post">
-                    <?php include('server.php'); ?>
-                    <?php include('errors.php'); ?>
-                    <div class="input-group">
-                        <label> Name</label><br>
-                        <input type="text" name="name">
-                    </div>
-                    <div class="input-group">
-                        <label> Lastname</label><br>
-                        <input type="text" name="lastname">
-                    </div>
-                    <div class="input-group">
-                        <label> Username</label><br>
-                        <input type="text" name="username">
-                    </div>
-                    <div class="input-group">
-                        <label> Password</label><br>
-                        <input type="text" name="password">
-                    </div>
-                    <div class="input-group">
-                         <label> Usertype</label><br>
-                        <select name="usertype">
-                            <?php include('utypeopt.php');?>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <button type="submit" name="Register" class="btn">Register</button>
-                    </div>
-             <!--        <p>Or <a href="login.php">Login</a></p> -->
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <form role="form" action="tables.php" method="post" >
+                                                        <?php include "add_area_c.php"; //adding area coordinator function ?> 
+                                                        <div class="input-group">
+                                                            <label> Name</label><br>
+                                                            <input type="text" name="name" required>
+                                                        </div>
+                                                        <div class="input-group">
+                                                            <label> Lastname</label><br>
+                                                            <input type="text" name="lastname" required>
+                                                        </div>
+                                                        <div class="input-group">
+                                                            <label> Username</label><br>
+                                                            <input type="text" name="username" required>
+                                                        </div>
+                                                        <div class="input-group">
+                                                            <label> Password</label><br>
+                                                            <input type="text" name="password" required>
+                                                        </div>
+                                                        <div class="input-group">
+                                                            <label> Usertype</label><br>
+                                                            <select name="usertype" class="custom-select" required>
+                                                                <option class="list-group-item disabled">Choose Usertype</option>
+                                                                <option value=1>Administrator</option>
+                                                                <option value=2>Program Coordinator</option>
+                                                                <option value=4>Accreditor</option>
+                                                            </select>
+                                                        </div><hr> &emsp;
+                                                        <!--    <div class="input-group">
+                                                                <button type="submit" name="Register" class="btn btn-default btn-default pull-left">Register</button>
+                                                            </div>
+                                                        <!-- <p>Or <a href="login.php">Login</a></p> -->
+                                                        <div>
+                                                        
+                                                        <button type="submit" name="Register" class="btn btn-success btn-default pull-left "data-Toggle="modal" data-target="#register">
+                                                        <span class="glyphicon glyphicon-ok"></span> Register</button>
+                                                        <button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal">
+                                                        <span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                                                        </div>
+                                                        
+                                                    </form>
+                                                </div>
+                                                
+                                                <!-- Modal footer 
+                                                <div class="modal-footer">
+                                                    
+                                                </div>-->
+
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
                     
-                </form>
-            </div>
+                            <!-- /.row -->
+                        <div class="panel-body">
+                             <div class="table-responsive">        
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-md-2" >Firstname</th>
+                                            <th class="col-md-2">Lastname</th>
+                                            <th class="col-md-2">Username</th>
+                                            <th>Usertype</th>
+                                            <th>Program</th>
+                                            <th></th>
+                                            
+                                            <!--    <th>Usertype</th>
+                                                <th>Program</th> -->
+                                        </tr>
+                                    </thead>
+                                        <tbody>
+                                            <?php
 
-            <!-- Modal footer -->
- <!--           <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>
--->
-            </div>
-        </div>
-        </div>
+                                                //make connection
+                                                $db = mysqli_connect('localhost','root','','registration');
+
+                                                if (!$db){
+                                                    die ("Connection failed". mysqli_connect_error());
+                                                }
+                                                $sql="SELECT * FROM users WHERE NOT utype=1";
+
+                                                $result = mysqli_query($db, $sql);
+
+                                                $rows = mysqli_num_rows($result);
 
 
+                                                if ($rows){
+                                                    while ($usersdata = mysqli_fetch_array($result)){
+                                                        echo "<tr>";
+                                                        echo "<td>".$usersdata['name']."</td>";
+                                                        echo "<td>".$usersdata['lastname']."</td>";
+                                                        echo "<td>".$usersdata['user']."</td>";
+                                                        //echo "<td>".$usersdata['utype']."</td>";
 
-  <button type="button" class="btn btn-success" onclick="window.location.href=''">DELETE</button>
-  <button type="button" class="btn btn-success">EDIT</button>
-	</div>
+                                                        $sql2="SELECT * FROM usertype WHERE utype_id='".$usersdata['utype']."'";
+                                                        $result2 = mysqli_query($db, $sql2);
+                                                        $udtype = mysqli_fetch_array($result2);
 
-	<div class="container">        
-	<table class="table table-bordered">
-		<thead>
-            <tr>
-                <th>Lastname</th>
-                <th>Firstname</th>
-                <th>Username</th>
-            <!--    <th>Usertype</th>
-                <th>Program</th> -->
-            </tr>
-        </thead>
-        <tbody>
-            <?php include ('usersdata.php'); ?>
-        </tbody>
-	</table>
-</div>
+                                                        echo "<td>".$udtype['usertype']."</td>";
+
+                                                        $sql3="SELECT * FROM program WHERE program_id='".$usersdata['program_id']."'";
+                                                        $result3 = mysqli_query($db, $sql3);
+                                                        $progtype = mysqli_fetch_array($result3);
+
+                                                        echo "<td>".$progtype['program_name']."</td>";
+                                                        echo "<td>
+                                                            <a href='edit_users.php?edit=".$usersdata['user_id']."'>
+                                                                <button type='submit' name='edit' class='btn btn-default btn-xs glyphicon glyphicon-edit'>
+                                                                </button>
+                                                            </a>
+                                                            </td>
+
+                                                            <td>
+                                                            <a href='delete_users.php?delete=".$usersdata['user_id']."'>
+                                                                <button type='submit' name='delete' class='btn btn-default btn-xs glyphicon glyphicon-trash' >
+                                                                </button>
+                                                            </a>
+                                                            </td>";
+                                                        
+                                                        echo "</tr>";
+                                                        
+                                                    }
+                                                }
+                                                
+                                            ?>
+                                            
+                                            <div class="modal fade" id="confirmdel" role="dialog">
+                                                <div class="modal-dialog modal-sm" >
+                                                    <div class="modal-content">
+                                                    
+                                                        <!-- Modal body -->
+                                                        <div class="modal-body">
+                                                            <span class="label label-warning">Are you sure you want to delete this user?</span>
+                                                            <span class="glyphicon glyphicon-ok"></span> Yes</button>
+                                                            <button type="submit" class="btn btn-default btn-default pull-right" data-dismiss="modal">
+                                                            <span class="glyphicon glyphicon-remove"></span> No</button>
+                                                        </div>  
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>   
                         </div>
                         <!-- /.panel-body -->
                     </div>
 
                     </div>
                     <!-- /.panel -->
-                </div>
-                    </div>
-                   
-                       
-                        <!-- /.panel-footer -->
-                    </div>
-                    <!-- /.panel .chat-panel -->
-                </div>
-                <!-- /.col-lg-4 -->
+                </div>  
             </div>
-            <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
 

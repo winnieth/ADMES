@@ -29,6 +29,29 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Fontfaces CSS-->
+	<link href="css/font-face.css" rel="stylesheet" media="all">
+	<link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+	<link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+	<link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+	<!-- Bootstrap CSS-->
+	<link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+	<!-- Vendor CSS-->
+	<link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+	<link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+	<link href="vendor/wow/animate.css" rel="stylesheet" media="all">
+	<link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+	<link href="vendor/slick/slick.css" rel="stylesheet" media="all">
+	<link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+	<link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+	<!-- Main CSS-->
+	<link href="css/theme.css" rel="stylesheet" media="all">
     <style>
     .img{ size: 500px 500px;}
     </style>
@@ -142,7 +165,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="loginasform.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -208,22 +231,59 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-          <?php include("imgback.php");?>
-          <?php 
-          $conn = mysqli_connect('localhost', 'root', '','sample2');
-          if (!$conn){
-            die ("Connection failed". mysqli_connect_error());
-            }
-            $sql="SELECT * FROM table_sample ";
-            $result = mysqli_query($conn, $sql);
-            $rows = mysqli_num_rows($result);
-            
-            if ($rows){
-                while ($image = mysqli_fetch_array($result)){
-                echo "<img class='img-thumbnail' src=".$image['path'].=$image['image']." width='204' height='136'>";
+<?php 
+include "connectdb.php";
+
+$sql2="SELECT * FROM parameters";
+$result2= mysqli_query($db,$sql2);
+$rows= mysqli_num_rows($result2);
+
+if ($rows){
+   
+    while ($prm=mysqli_fetch_assoc($result2)){
+
+        
+        echo"<div class='media'><a href='#".$prm['param_id']."' data-toggle='collapse'>".$prm['parameter_name']."</a>
+        <div>
+        <div class'media-body collapse'>";
+
+
+        $sql3 ="SELECT tbl_benchmarks.image,tbl_benchmarks.bnch_id, tbl_benchmarks.bnch_desc, parameters.param_id  FROM tbl_benchmarks
+        LEFT JOIN parameters ON tbl_benchmarks.param_id = parameters.param_id WHERE parameters.param_id='$prm[param_id]'";
+
+        if (!$result3= mysqli_query($db,$sql3)){
+            echo mysqli_error($db);
+        }
+        $rows2= mysqli_num_rows($result3);
+
+        if($rows2){
+            $benchcCounter = 0;
+            $benchTotal = 0;
+            while($bnch=mysqli_fetch_array($result3)){
+                //echo "&emsp;<a href='bnchimg.php'>".$bnch['bnch_desc']."</a><br>";
+                //echo $bnch['bnch_desc'];
+                if($bnch['image'] != ""){
+                    $benchcCounter++;
                 }
+                $benchTotal++;
             }
-          ?>
+            echo $benchcCounter."/".$benchTotal;
+            $percent = ($benchcCounter/$benchTotal)*100;
+            $total = 100 - intval($percent);
+            echo "<br>".intval($percent)." %";
+            
+            echo "<div class='progress mb-2'>
+                <div class='progress-bar bg-success' role='progressbar' style='width: ".intval($percent)."' aria-valuenow='".intval($percent)."' aria-valuemin='0' aria-valuemax='100'>".intval($percent)."</div>
+        </div>
+            ";
+        }
+                
+        
+    }// end while
+    
+}
+
+?>
             
                   
         </div>
@@ -234,15 +294,40 @@
 
     <!-- jQuery -->
     <script src="../vendor/jquery/jquery.min.js"></script>
-
+    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
     <!-- Bootstrap Core JavaScript -->
     <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.js"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
+
+    <!-- Jquery JS-->
+	<script src="vendor/jquery-3.2.1.min.js"></script>
+	<!-- Bootstrap JS-->
+	<script src="vendor/bootstrap-4.1/popper.min.js"></script>
+	<script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+	<!-- Vendor JS       -->
+	<script src="vendor/slick/slick.min.js">
+	</script>
+	<script src="vendor/wow/wow.min.js"></script>
+	<script src="vendor/animsition/animsition.min.js"></script>
+	<script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+	</script>
+	<script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+	<script src="vendor/counter-up/jquery.counterup.min.js">
+	</script>
+	<script src="vendor/circle-progress/circle-progress.min.js"></script>
+	<script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+	<script src="vendor/chartjs/Chart.bundle.min.js"></script>
+	<script src="vendor/select2/select2.min.js">
+	</script>
+
+	<!-- Main JS-->
+	<script src="js/main.js"></script>
+
 
 </body>
 
